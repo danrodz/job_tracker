@@ -1,6 +1,7 @@
-import React from 'react';
-import { bool } from 'prop-types';
-import { connect } from 'react-redux';
+import React from "react";
+import { bool } from "prop-types";
+import { connect } from "react-redux";
+import BoardContainer from "../../containers/BoardContainer/BoardContainer";
 
 const Home = props => {
   const { isMobile } = props;
@@ -8,8 +9,10 @@ const Home = props => {
   return (
     <div className="Home">
       <h1>Home</h1>
-
-      <p>You are using: <strong>{isMobile ? 'mobile' : 'desktop'}</strong></p>
+      <BoardContainer />
+      <p>
+        You are using: <strong>{isMobile ? "mobile" : "desktop"}</strong>
+      </p>
     </div>
   );
 };
