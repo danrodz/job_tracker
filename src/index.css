@@ -3,3 +3,18 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+/* react-datepicker calendar plug-in */
+
+/* centers pop-up time's container width  */
+ul.react-datepicker__time-list {
+  height: 227px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* expands input calendar box */
+div.react-datepicker__input-container input {
+  height: 20px;
+  width: 185px;
+}

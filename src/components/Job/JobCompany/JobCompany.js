@@ -1,9 +1,20 @@
 import React from "react";
 import JobCompanyItem from "./JobCompanyItem/JobCompanyItem";
 
-const JobCompany = ({ url, year, type, country }) => {
+const JobCompany = ({
+  company,
+  subtitle,
+  headquarters,
+  url,
+  year,
+  type,
+  country
+}) => {
   return (
     <div>
+      <h4>{company}</h4>
+      <h5>{subtitle}</h5>
+      <h6>{headquarters}</h6>
       <ul>
         <JobCompanyItem label="Website" value={url} link={url} />
         <JobCompanyItem label="Founded" value={year} />

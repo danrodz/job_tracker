@@ -3,7 +3,7 @@ import React from "react";
 const JobCompanyItem = ({ label, value, link }) => {
   return (
     <li>
-      <span>{label}</span>
+      <span>{label} </span>
       {link ? (
         <a href={link} target="_blank" title={value}>
           {value}
