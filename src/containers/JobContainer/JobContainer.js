@@ -3,6 +3,7 @@ import JobContent from "../../components/Job/JobLayout/JobContent/JobContent";
 import JobHeader from "../../components/Job/JobLayout/JobHeader/JobHeader";
 import JobSideMenu from "../../components/Job/JobLayout/JobSideMenu/JobSideMenu";
 import moment from "moment";
+// import { object, string, array, func } from 'prop-types';
 
 class JobContainer extends Component {
   state = {

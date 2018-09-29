@@ -1,5 +1,6 @@
 import React from "react";
 import JobLogDateItem from "./JobLogDateItem/JobLogDateItem";
+import { object, func } from "prop-types";
 
 const JobLogDates = ({
   deadline,
@@ -35,6 +36,16 @@ const JobLogDates = ({
       {dates}
     </div>
   );
+};
+
+JobLogDates.propTypes = {
+  deadline: object,
+  applied: object,
+  interview_1: object,
+  interview_2: object,
+  offer: object,
+  handleDateChange: func,
+  handleDateSelect: func
 };
 
 export default JobLogDates;

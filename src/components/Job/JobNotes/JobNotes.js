@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import uuidv4 from "uuid/v4";
+import { string, func, array } from "prop-types";
 
 const JobNotes = ({
   note,
@@ -44,6 +45,14 @@ const JobNotes = ({
       <div>{allNotes}</div>
     </Fragment>
   );
+};
+
+JobNotes.propTypes = {
+  note: string,
+  notes: array,
+  handleDeleteNote: func,
+  handleNotesSubmit: func,
+  handleInputChange: func
 };
 
 export default JobNotes;

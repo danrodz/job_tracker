@@ -2,6 +2,7 @@ import React from "react";
 import JobGeneralInfo from "./JobGeneralInfo/JobGeneralInfo";
 import JobLogDates from "./JobLogDates/JobLogDates";
 import JobDescription from "./JobDescription/JobDescription";
+import { object, string, func } from "prop-types";
 
 const JobInfo = ({
   company,
@@ -15,7 +16,6 @@ const JobInfo = ({
   interview_1,
   interview_2,
   offer,
-  calendarSelected,
   handleInputChange,
   handleDateChange,
   handleDateSelect
@@ -36,7 +36,6 @@ const JobInfo = ({
         interview_1={interview_1}
         interview_2={interview_2}
         offer={offer}
-        calendarSelected={calendarSelected}
         handleDateChange={handleDateChange}
         handleDateSelect={handleDateSelect}
       />
@@ -46,6 +45,23 @@ const JobInfo = ({
       />
     </div>
   );
+};
+
+JobInfo.propTypes = {
+  company: string,
+  title: string,
+  location: string,
+  salary: string,
+  postURL: string,
+  description: string,
+  deadline: object,
+  applied: object,
+  interview_1: object,
+  interview_2: object,
+  offer: object,
+  handleInputChange: func,
+  handleDateChange: func,
+  handleDateSelect: func
 };
 
 export default JobInfo;

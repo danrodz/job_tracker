@@ -3,6 +3,7 @@ import JobCompany from "../../JobCompany/JobCompany";
 import JobInfo from "../../JobInfo/JobInfo";
 import JobNotes from "../../JobNotes/JobNotes";
 import JobTasks from "../../JobTasks/JobTasks";
+import { object, string, func, array } from "prop-types";
 
 const JobContent = ({
   company,
@@ -90,6 +91,39 @@ const JobContent = ({
       ) : null}
     </Fragment>
   );
+};
+
+JobContent.propTypes = {
+  company: string,
+  location: string,
+  salary: string,
+  title: string,
+  description: string,
+  postURL: string,
+  subtitle: string,
+  headquarters: string,
+  url: string,
+  year: string,
+  type: string,
+  country: string,
+  showing: string,
+  note: string,
+  notes: array,
+  task: string,
+  tasks: array,
+  taskDate: object,
+  deadline: object,
+  applied: object,
+  interview_1: object,
+  interview_2: object,
+  offer: object,
+  handleInputChange: func,
+  handleNotesSubmit: func,
+  handleDeleteNote: func,
+  handleDateChange: func,
+  handleDateSelect: func,
+  handleTaskSubmit: func,
+  handleCheckboxToggle: func
 };
 
 export default JobContent;

@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { string, func } from "prop-types";
 
 const JobDescription = ({ handleInputChange, description }) => {
   return (
@@ -13,6 +14,11 @@ const JobDescription = ({ handleInputChange, description }) => {
       />
     </Fragment>
   );
+};
+
+JobDescription.propTypes = {
+  handleInputChange: func,
+  description: string
 };
 
 export default JobDescription;

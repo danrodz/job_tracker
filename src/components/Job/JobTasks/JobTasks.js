@@ -2,6 +2,7 @@ import React from "react";
 import JobLogDateItem from "../JobInfo/JobLogDates/JobLogDateItem/JobLogDateItem";
 import JobTaskItem from "./JobTaskItem/JobTaskItem";
 import uuidv4 from "uuid/v4";
+import { string, object, func, array } from "prop-types";
 
 const JobTasks = ({
   task,
@@ -46,6 +47,17 @@ const JobTasks = ({
       {allTasks}
     </div>
   );
+};
+
+JobTasks.propTypes = {
+  task: string,
+  tasks: array,
+  taskDate: object,
+  handleInputChange: func,
+  handleDateChange: func,
+  handleDateSelect: func,
+  handleTaskSubmit: func,
+  handleCheckboxToggle: func
 };
 
 export default JobTasks;

@@ -1,4 +1,5 @@
 import React from "react";
+import { func } from "prop-types";
 
 const JobSideMenu = ({ handleSideMenuClick }) => {
   return (
@@ -29,6 +30,10 @@ const JobSideMenu = ({ handleSideMenuClick }) => {
       />
     </div>
   );
+};
+
+JobSideMenu.propTypes = {
+  handleSideMenuClick: func
 };
 
 export default JobSideMenu;

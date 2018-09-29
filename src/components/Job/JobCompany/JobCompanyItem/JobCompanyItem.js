@@ -1,4 +1,5 @@
 import React from "react";
+import { string } from "prop-types";
 
 const JobCompanyItem = ({ label, value, link }) => {
   return (
@@ -13,6 +14,12 @@ const JobCompanyItem = ({ label, value, link }) => {
       )}
     </li>
   );
+};
+
+JobCompanyItem.propTypes = {
+  label: string,
+  value: string,
+  link: string
 };
 
 export default JobCompanyItem;

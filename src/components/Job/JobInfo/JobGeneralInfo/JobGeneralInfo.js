@@ -1,13 +1,13 @@
 import React from "react";
-
+import { string, func } from "prop-types";
 // onFocus onBlur onChange
 
 const JobGeneralInfo = ({
-  company = "",
-  title = "",
-  location = "",
-  salary = "",
-  postURL = "",
+  company,
+  title,
+  location,
+  salary,
+  postURL,
   handleInputChange
 }) => {
   return (
@@ -59,6 +59,15 @@ const JobGeneralInfo = ({
       />
     </div>
   );
+};
+
+JobGeneralInfo.propTypes = {
+  company: string,
+  title: string,
+  location: string,
+  salary: string,
+  postURL: string,
+  handleInputChange: func
 };
 
 export default JobGeneralInfo;

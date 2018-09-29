@@ -1,4 +1,5 @@
 import React from "react";
+import { string } from "prop-types";
 import JobCompanyItem from "./JobCompanyItem/JobCompanyItem";
 
 const JobCompany = ({
@@ -25,6 +26,16 @@ const JobCompany = ({
       </ul>
     </div>
   );
+};
+
+JobCompany.propTypes = {
+  company: string,
+  subtitle: string,
+  headquarters: string,
+  url: string,
+  year: string,
+  type: string,
+  country: string
 };
 
 export default JobCompany;
