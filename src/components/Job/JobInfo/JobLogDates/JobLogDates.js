@@ -1,87 +1,40 @@
-import React, { Component } from "react";
-import DatePicker from "react-datepicker";
-import moment from "moment";
+import React from "react";
+import JobLogDateItem from "./JobLogDateItem/JobLogDateItem";
 
-import "react-datepicker/dist/react-datepicker.css";
-
-class JobLogDates extends Component {
-  state = {
-    deadline: moment(),
-    applied: moment(),
-    interviewOne: moment(),
-    interviewTwo: moment(),
-    offer: moment(),
-    calendarSelected: ""
-  };
-
-  handleChange = date => {
-    const { calendarSelected } = this.state;
-    this.setState({ [calendarSelected]: date });
-  };
-
-  handleSelect = calendarSelected => {
-    this.setState({ calendarSelected });
-  };
-
-  render() {
-    const { deadline, applied, interviewOne, interviewTwo, offer } = this.state;
+const JobLogDates = ({
+  deadline,
+  applied,
+  interview_1,
+  interview_2,
+  offer,
+  handleDateChange,
+  handleDateSelect
+}) => {
+  const dates = [
+    { date: deadline, label: "deadline", name: "Deadline" },
+    { date: applied, label: "applied", name: "Applied" },
+    { date: interview_1, label: "interview_1", name: "Interview 1" },
+    { date: interview_2, label: "interview_2", name: "Interview 2" },
+    { date: offer, label: "offer", name: "Offer" }
+  ].map(({ date, label, name }) => {
     return (
-      <div>
-        <p>LOG DATES</p>
-        <p>Deadline</p>
-        <DatePicker
-          onFocus={() => this.handleSelect("deadline")}
-          selected={deadline}
-          onChange={this.handleChange}
-          name="deadline"
-          isClearable={true}
-          placeholderText="+ Set date"
-          dateFormat="LLL"
-          showTimeSelect
-        />
-        <p>Applied</p>
-        <DatePicker
-          onFocus={() => this.handleSelect("applied")}
-          selected={applied}
-          onChange={this.handleChange}
-          isClearable={true}
-          placeholderText="+ Set date"
-          dateFormat="LLL"
-          showTimeSelect
-        />
-        <p>Interview 1</p>
-        <DatePicker
-          onFocus={() => this.handleSelect("interviewOne")}
-          selected={interviewOne}
-          onChange={this.handleChange}
-          isClearable={true}
-          placeholderText="+ Set date"
-          dateFormat="LLL"
-          showTimeSelect
-        />
-        <p>interview 2</p>
-        <DatePicker
-          onFocus={() => this.handleSelect("interviewTwo")}
-          selected={interviewTwo}
-          onChange={this.handleChange}
-          isClearable={true}
-          placeholderText="+ Set date"
-          dateFormat="LLL"
-          showTimeSelect
-        />
-        <p>Offer</p>
-        <DatePicker
-          onFocus={() => this.handleSelect("offer")}
-          selected={offer}
-          onChange={this.handleChange}
-          isClearable={true}
-          placeholderText="+ Set date"
-          dateFormat="LLL"
-          showTimeSelect
-        />
-      </div>
+      <JobLogDateItem
+        key={name}
+        name={name}
+        date={date}
+        label={label}
+        handleDateChange={handleDateChange}
+        handleDateSelect={handleDateSelect}
+      />
     );
-  }
-}
+  });
+
+  return (
+    <div>
+      <p>LOG DATES</p>
+      {dates}
+    </div>
+  );
+};
 
 export default JobLogDates;

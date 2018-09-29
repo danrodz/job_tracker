@@ -1,6 +1,7 @@
 import React from "react";
 import JobGeneralInfo from "./JobGeneralInfo/JobGeneralInfo";
 import JobLogDates from "./JobLogDates/JobLogDates";
+import JobDescription from "./JobDescription/JobDescription";
 
 const JobInfo = ({
   company,
@@ -8,7 +9,16 @@ const JobInfo = ({
   location,
   salary,
   postURL,
-  handleInputChange
+  description,
+  deadline,
+  applied,
+  interview_1,
+  interview_2,
+  offer,
+  calendarSelected,
+  handleInputChange,
+  handleDateChange,
+  handleDateSelect
 }) => {
   return (
     <div>
@@ -20,21 +30,22 @@ const JobInfo = ({
         postURL={postURL}
         handleInputChange={handleInputChange}
       />
-      <JobLogDates />
+      <JobLogDates
+        deadline={deadline}
+        applied={applied}
+        interview_1={interview_1}
+        interview_2={interview_2}
+        offer={offer}
+        calendarSelected={calendarSelected}
+        handleDateChange={handleDateChange}
+        handleDateSelect={handleDateSelect}
+      />
+      <JobDescription
+        handleInputChange={handleInputChange}
+        description={description}
+      />
     </div>
   );
 };
-
-/*
-JobGeneralInfo
-  company = "",
-  title = "",
-  location = "",
-  salary = "",
-  postURL = "",
-  handleInputChange
-
-JobLogDates
-*/
 
 export default JobInfo;
