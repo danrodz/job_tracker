@@ -92,24 +92,4 @@ const JobContent = ({
   );
 };
 
-/*
-<JobInfo
-  company={company}
-  location={location}
-  salary={salary}
-  postUrl={postUrl}
-  handleInputChange
-/>
-
-<JobCompany
-  company={company}
-  subtitle={subtitle}
-  headquarters={headquarters}
-  url={url}
-  year={year}
-  type={type}
-  country={country}
-/>
-
-*/
 export default JobContent;

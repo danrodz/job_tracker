@@ -21,7 +21,7 @@ class JobContainer extends Component {
     showing: "jobInfo",
     note: "",
     notes: [],
-    task: "hello",
+    task: "",
     tasks: [],
     taskDate: moment(),
     deadline: moment(),
@@ -48,7 +48,9 @@ class JobContainer extends Component {
 
   handleDeleteNote = index => {
     const notes = [...this.state.notes];
+
     notes.splice(index, 1);
+
     this.setState({ notes });
   };
 
@@ -74,15 +76,19 @@ class JobContainer extends Component {
   // Job Tasks
   handleTaskSubmit = e => {
     e.preventDefault();
+
     const { task, taskDate } = this.state;
     const newTask = { content: task, date: taskDate, completed: false };
+
     const tasks = [...this.state.tasks, newTask];
-    this.setState({ tasks });
+    this.setState({ tasks, task: "" });
   };
 
   handleCheckboxToggle = ({ target: { id } }) => {
     const tasks = [...this.state.tasks];
+
     tasks[id].completed = !tasks[id].completed;
+
     this.setState({ tasks });
   };
 
@@ -112,6 +118,7 @@ class JobContainer extends Component {
       interview_2,
       offer
     } = this.state;
+
     return (
       <Fragment>
         <JobHeader company={company} title={title} />
@@ -152,7 +159,5 @@ class JobContainer extends Component {
     );
   }
 }
-/*
 
-*/
 export default JobContainer;
