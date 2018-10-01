@@ -1,30 +1,20 @@
-import React, { Fragment } from "react";
-import uuidv4 from "uuid/v4";
-import { string, func, array } from "prop-types";
+import React, { Fragment } from 'react';
+import uuidv4 from 'uuid/v4';
+import { string, func, array } from 'prop-types';
 
 const JobNotes = ({
-  note,
-  notes,
-  handleDeleteNote,
-  handleNotesSubmit,
-  handleInputChange
+  note, notes, handleDeleteNote, handleNotesSubmit, handleInputChange
 }) => {
   let allNotes = null;
 
   if (notes.length) {
-    allNotes = notes.map(({ content, time }, index) => {
-      return (
-        <div key={uuidv4()}>
-          <p>{time}</p>
-          <p>{content}</p>
-          <input
-            type="button"
-            value="Delete"
-            onClick={() => handleDeleteNote(index)}
-          />
-        </div>
-      );
-    });
+    allNotes = notes.map(({ content, time }, index) => (
+      <div key={uuidv4()}>
+        <p>{time}</p>
+        <p>{content}</p>
+        <input type="button" value="Delete" onClick={() => handleDeleteNote(index)} />
+      </div>
+    ));
   }
 
   return (

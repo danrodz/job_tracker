@@ -1,8 +1,8 @@
-import React from "react";
-import JobGeneralInfo from "./JobGeneralInfo/JobGeneralInfo";
-import JobLogDates from "./JobLogDates/JobLogDates";
-import JobDescription from "./JobDescription/JobDescription";
-import { object, string, func } from "prop-types";
+import React from 'react';
+import { object, string, func } from 'prop-types';
+import JobGeneralInfo from './JobGeneralInfo/JobGeneralInfo';
+import JobLogDates from './JobLogDates/JobLogDates';
+import JobDescription from './JobDescription/JobDescription';
 
 const JobInfo = ({
   company,
@@ -19,33 +19,28 @@ const JobInfo = ({
   handleInputChange,
   handleDateChange,
   handleDateSelect
-}) => {
-  return (
-    <div>
-      <JobGeneralInfo
-        company={company}
-        title={title}
-        location={location}
-        salary={salary}
-        postURL={postURL}
-        handleInputChange={handleInputChange}
-      />
-      <JobLogDates
-        deadline={deadline}
-        applied={applied}
-        interview_1={interview_1}
-        interview_2={interview_2}
-        offer={offer}
-        handleDateChange={handleDateChange}
-        handleDateSelect={handleDateSelect}
-      />
-      <JobDescription
-        handleInputChange={handleInputChange}
-        description={description}
-      />
-    </div>
-  );
-};
+}) => (
+  <div>
+    <JobGeneralInfo
+      company={company}
+      title={title}
+      location={location}
+      salary={salary}
+      postURL={postURL}
+      handleInputChange={handleInputChange}
+    />
+    <JobLogDates
+      deadline={deadline}
+      applied={applied}
+      interview_1={interview_1}
+      interview_2={interview_2}
+      offer={offer}
+      handleDateChange={handleDateChange}
+      handleDateSelect={handleDateSelect}
+    />
+    <JobDescription handleInputChange={handleInputChange} description={description} />
+  </div>
+);
 
 JobInfo.propTypes = {
   company: string,
