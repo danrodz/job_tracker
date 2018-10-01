@@ -18,6 +18,7 @@
     "react-scripts": "1.1.0",
     "redux": "^3.7.2",
     "redux-form": "^7.3.0",
+    "redux-promise": "^0.6.0",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
@@ -25,9 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .jsx,.js src",
     "postmerge": "npm install",
-    "postrewrite": "npm install",
-    "precommit": "npm run lint"
+    "postrewrite": "npm install"
   }
 }
