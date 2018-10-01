@@ -21,16 +21,15 @@
     "redux": "^3.7.2",
     "redux-form": "^7.3.0",
     "redux-thunk": "^2.2.0",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "redux-promise": "^0.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .jsx,.js src",
     "postmerge": "npm install",
-    "postrewrite": "npm install",
-    "precommit": "npm run lint"
+    "postrewrite": "npm install"
   }
 }
