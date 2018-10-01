@@ -12,12 +12,13 @@ const mapStateToProps = ({ coins }) => ({
   coins
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(
-  {
-    fetchCoins
-  },
-  dispatch
-);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      fetchCoins
+    },
+    dispatch
+  );
 
 export default connect(
   mapStateToProps,

@@ -14,13 +14,15 @@ class Coins extends Component {
   };
 
   componentWillMount() {
-    const { fetchCoins } = this.props;
+    const { fetchCoins } = this.props;
 
     fetchCoins();
   }
 
   render() {
-    const { coins: { coins } } = this.props;
+    const {
+      coins: { coins }
+    } = this.props;
 
     if (isFirstRender(coins)) {
       return null;
@@ -33,7 +35,9 @@ class Coins extends Component {
         <ul>
           {coins.map((coin, key) => (
             <li key={key}>
-              <span className="left">{coin.rank} {coin.name} {coin.symbol}</span>
+              <span className="left">
+                {coin.rank} {coin.name} {coin.symbol}
+              </span>
               <span className="right">${coin.price_usd}</span>
             </li>
           ))}

@@ -2,7 +2,7 @@
   "parser": "babel-eslint",
   "extends": "airbnb",
   "globals": {
-    "document": "true"
+    "document": true
   },
   "rules": {
     "arrow-parens": "off",
@@ -10,6 +10,7 @@
     "function-paren-newline": "off",
     "max-len": [1, 120],
     "no-param-reassign": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }
