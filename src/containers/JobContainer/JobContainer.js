@@ -1,28 +1,29 @@
-import React, { Component, Fragment } from "react";
-import JobContent from "../../components/Job/JobLayout/JobContent/JobContent";
-import JobHeader from "../../components/Job/JobLayout/JobHeader/JobHeader";
-import JobSideMenu from "../../components/Job/JobLayout/JobSideMenu/JobSideMenu";
-import moment from "moment";
+import React, { Component } from 'react';
+import { Modal, Row, Button, Icon } from 'react-materialize';
+import JobContent from '../../components/Job/JobLayout/JobContent/JobContent';
+import JobHeader from '../../components/Job/JobLayout/JobHeader/JobHeader';
+import JobSideMenu from '../../components/Job/JobLayout/JobSideMenu/JobSideMenu';
+import moment from 'moment';
 // import { object, string, array, func } from 'prop-types';
 
 class JobContainer extends Component {
   state = {
-    company: "Google",
-    location: "Austin",
-    salary: "$100,000",
-    description: "really want it",
-    title: "Software Developer",
-    postURL: "indeed.com",
-    subtitle: "Google your life away",
-    headquarters: "Hippie Land, CA",
-    url: "google.com",
-    year: "1998",
-    type: "Public",
-    country: "USA",
-    showing: "jobInfo",
-    note: "",
+    company: 'Google',
+    location: 'Austin',
+    salary: '$100,000',
+    description: 'really want it',
+    title: 'Software Developer',
+    postURL: 'indeed.com',
+    subtitle: 'Google your life away',
+    headquarters: 'Hippie Land, CA',
+    url: 'google.com',
+    year: '1998',
+    type: 'Public',
+    country: 'USA',
+    showing: 'jobInfo',
+    note: '',
     notes: [],
-    task: "",
+    task: '',
     tasks: [],
     taskDate: moment(),
     deadline: moment(),
@@ -30,7 +31,7 @@ class JobContainer extends Component {
     interview_1: moment(),
     interview_2: moment(),
     offer: moment(),
-    calendarSelected: ""
+    calendarSelected: ''
   };
 
   handleInputChange = ({ target: { name, value } }) => {
@@ -44,7 +45,7 @@ class JobContainer extends Component {
   // Job Notes
   addNote = note => {
     const notes = [note, ...this.state.notes];
-    this.setState({ notes, note: "" });
+    this.setState({ notes, note: '' });
   };
 
   handleDeleteNote = index => {
@@ -58,7 +59,7 @@ class JobContainer extends Component {
   handleNotesSubmit = e => {
     e.preventDefault();
 
-    const now = moment().format("LLLL");
+    const now = moment().format('LLLL');
     const { note } = this.state;
 
     this.addNote({ content: note, time: now });
@@ -82,7 +83,7 @@ class JobContainer extends Component {
     const newTask = { content: task, date: taskDate, completed: false };
 
     const tasks = [...this.state.tasks, newTask];
-    this.setState({ tasks, task: "" });
+    this.setState({ tasks, task: '' });
   };
 
   handleCheckboxToggle = ({ target: { id } }) => {
@@ -121,42 +122,54 @@ class JobContainer extends Component {
     } = this.state;
 
     return (
-      <Fragment>
-        <JobHeader company={company} title={title} />
-        <JobSideMenu handleSideMenuClick={this.handleSideMenuClick} />
-        <JobContent
-          company={company}
-          location={location}
-          salary={salary}
-          description={description}
-          title={title}
-          postURL={postURL}
-          subtitle={subtitle}
-          headquarters={headquarters}
-          url={url}
-          year={year}
-          type={type}
-          country={country}
-          showing={showing}
-          note={note}
-          notes={notes}
-          task={task}
-          tasks={tasks}
-          taskDate={taskDate}
-          deadline={deadline}
-          applied={applied}
-          interview_1={interview_1}
-          interview_2={interview_2}
-          offer={offer}
-          handleInputChange={this.handleInputChange}
-          handleNotesSubmit={this.handleNotesSubmit}
-          handleDeleteNote={this.handleDeleteNote}
-          handleDateChange={this.handleDateChange}
-          handleDateSelect={this.handleDateSelect}
-          handleTaskSubmit={this.handleTaskSubmit}
-          handleCheckboxToggle={this.handleCheckboxToggle}
-        />
-      </Fragment>
+      <Row>
+        <Modal
+          fixedFooter
+          trigger={
+            <Button waves="light">
+              {company}
+              <Icon right large>
+                add_circle_outline
+              </Icon>
+            </Button>
+          }
+        >
+          <JobHeader company={company} title={title} />
+          <JobSideMenu handleSideMenuClick={this.handleSideMenuClick} />
+          <JobContent
+            company={company}
+            location={location}
+            salary={salary}
+            description={description}
+            title={title}
+            postURL={postURL}
+            subtitle={subtitle}
+            headquarters={headquarters}
+            url={url}
+            year={year}
+            type={type}
+            country={country}
+            showing={showing}
+            note={note}
+            notes={notes}
+            task={task}
+            tasks={tasks}
+            taskDate={taskDate}
+            deadline={deadline}
+            applied={applied}
+            interview_1={interview_1}
+            interview_2={interview_2}
+            offer={offer}
+            handleInputChange={this.handleInputChange}
+            handleNotesSubmit={this.handleNotesSubmit}
+            handleDeleteNote={this.handleDeleteNote}
+            handleDateChange={this.handleDateChange}
+            handleDateSelect={this.handleDateSelect}
+            handleTaskSubmit={this.handleTaskSubmit}
+            handleCheckboxToggle={this.handleCheckboxToggle}
+          />
+        </Modal>
+      </Row>
     );
   }
 }

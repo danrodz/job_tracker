@@ -1,5 +1,5 @@
-import React from "react";
+import React from 'react';
 
-const Footer = () => <footer>&copy; {new Date().getFullYear()}</footer>;
+const Footer = () => <footer className="container">&copy; {new Date().getFullYear()}</footer>;
 
 export default Footer;

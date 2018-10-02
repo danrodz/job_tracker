@@ -1,14 +1,12 @@
-import React from "react";
-import { string } from "prop-types";
+import React from 'react';
+import { string } from 'prop-types';
 
-const JobHeader = ({ company, title }) => {
-  return (
-    <div>
-      <h1>{company}</h1>
-      <h2>{title}</h2>
-    </div>
-  );
-};
+const JobHeader = ({ company, title }) => (
+  <div>
+    <h3>{company}</h3>
+    <h4>{title}</h4>
+  </div>
+);
 
 JobHeader.propTypes = {
   company: string,

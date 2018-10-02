@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 const Content = props => {
   const { children } = props;
 
-  return (
-    <main>
-      {children}
-    </main>
-  );
+  return <main className="container">{children}</main>;
 };
 
 Content.propTypes = {

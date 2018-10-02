@@ -35,13 +35,12 @@ const Header = props => {
         <NavItem>
           <Link to="/contact">Contact</Link>
         </NavItem>
+        <NavItem>
           <Link to="/login"
             onClick={() => {
               localStorage.clear();
               this.props.history.push('/login');
-            }}
-          >Signout</Link>
-        <NavItem>
+            }}>Signout</Link>
         </NavItem>
       </Navbar>
     </Row>
