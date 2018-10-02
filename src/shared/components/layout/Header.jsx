@@ -35,6 +35,16 @@ const Header = props => {
         <NavItem>
           <Link to="/contact">Contact</Link>
         </NavItem>
+        <NavItem>
+          <div
+            onClick={() => {
+              localStorage.clear();
+              this.props.history.push('/login');
+            }}
+          >
+            Signout
+          </div>
+        </NavItem>
       </Navbar>
     </Row>
   );
