@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import uuidv4 from 'uuid/v4';
 import { string, object, func, array } from 'prop-types';
+import { Button, Input } from 'react-materialize';
 import JobLogDateItem from '../JobInfo/JobLogDates/JobLogDateItem/JobLogDateItem';
 import JobTaskItem from './JobTaskItem/JobTaskItem';
 
@@ -19,20 +20,21 @@ const JobTasks = ({
   ));
 
   return (
-    <div>
+    <Fragment>
       <form onSubmit={handleTaskSubmit}>
-        <input type="text" name="task" placeholder="+ Add Task" value={task} onChange={handleInputChange} />
-        <input type="submit" value="Add Task" />
+        <JobLogDateItem
+          name="Due Date"
+          label="taskDate"
+          date={taskDate}
+          handleDateChange={handleDateChange}
+          handleDateSelect={handleDateSelect}
+        />
+        <Input type="text" name="task" placeholder="+ Add Task" value={task} onChange={handleInputChange} />
+        <Button>Add Task</Button>
       </form>
-      <JobLogDateItem
-        name="Due Date"
-        label="taskDate"
-        date={taskDate}
-        handleDateChange={handleDateChange}
-        handleDateSelect={handleDateSelect}
-      />
+      <br />
       {allTasks}
-    </div>
+    </Fragment>
   );
 };
 

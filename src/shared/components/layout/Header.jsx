@@ -1,32 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import logo from '../../images/logo.svg';
+import { Navbar, NavItem, Row } from 'react-materialize';
 
 // We created a component with a simple arrow function.
 const Header = props => {
-  const {
-    title = 'Welcome to React',
-    url = 'http://localhost:3000'
-  } = props;
+  const { url = 'http://localhost:3000' } = props;
 
   return (
-    <header className="App-header">
+    <Row className="row App-header">
       <a href={url}>
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src="https://huntr.co/images/huntr_logo_white.png" alt="logo" />
       </a>
-      <h1 className="App-title">{title}</h1>
 
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/login">Login</Link></li>
-        <li><Link to="/signup">Signup</Link></li>
-        <li><Link to="/notes">Notes</Link></li>
-        <li><Link to="/todo">Todo</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-      </ul>
-    </header>
+      <Navbar right>
+        <NavItem>
+          <Link to="/">Home</Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/about">About</Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/login">Login</Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/signup">Signup</Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/notes">Notes</Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/todo">Todo</Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/contact">Contact</Link>
+        </NavItem>
+      </Navbar>
+    </Row>
   );
 };
 
