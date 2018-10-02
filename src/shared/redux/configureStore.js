@@ -6,13 +6,7 @@ import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 
 export default function configureStore(initialState) {
-  const middleware = [
-    thunk
-  ];
+  const middleware = [thunk];
 
-  return createStore(
-    rootReducer,
-    initialState,
-    applyMiddleware(...middleware)
-  );
+  return createStore(rootReducer, initialState, applyMiddleware(...middleware));
 }
