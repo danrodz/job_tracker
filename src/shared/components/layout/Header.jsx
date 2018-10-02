@@ -25,10 +25,10 @@ const Header = props => {
         <li><Link to="/notes">Notes</Link></li>
         <li><Link to="/todo">Todo</Link></li>
         <li><Link to="/contact">Contact</Link></li>
-        <li onClick={() => {
+        {/* <li onClick={() => {
           localStorage.clear()
           this.props.history.push("/login")
-        }}>Signout</li>
+        }}>Signout</li> */}
       </ul>
     </header>
   );
