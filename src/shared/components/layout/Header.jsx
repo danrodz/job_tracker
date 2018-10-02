@@ -43,7 +43,9 @@ const Header = props => {
             }}
           >
             Signout
+
          </div>
+
         </NavItem>
       </Navbar>
     </Row>

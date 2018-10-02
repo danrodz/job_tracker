@@ -6,15 +6,13 @@ import Footer from '../shared/components/layout/Footer';
 import './App.css';
 
 const App = props => (
-  <div className="App">
+  <React.Fragment>
     <Header title="Forms" />
 
-    <Content>
-      {props.children}
-    </Content>
+    <Content>{props.children}</Content>
 
     <Footer />
-  </div>
+  </React.Fragment>
 );
 
 App.propTypes = {

@@ -3,14 +3,14 @@ import { string } from 'prop-types';
 
 const JobCompanyItem = ({ label, value, link }) => (
   <li>
-    <span>{label} </span>
+    <b>{label}: </b>
     {link ? (
       <a href={link} rel="noopener noreferrer" target="_blank" title={value}>
         {value}
       </a>
-      ) : (
-        <span>{value}</span>
-      )}
+    ) : (
+      <span>{value}</span>
+    )}
   </li>
 );
 
