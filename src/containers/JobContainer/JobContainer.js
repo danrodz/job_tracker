@@ -8,30 +8,32 @@ import moment from 'moment';
 
 class JobContainer extends Component {
   state = {
-    company: 'Google',
-    location: 'Austin',
-    salary: '$100,000',
-    description: 'really want it',
-    title: 'Software Developer',
-    postURL: 'indeed.com',
-    subtitle: 'Google your life away',
-    headquarters: 'Hippie Land, CA',
-    url: 'google.com',
-    year: '1998',
-    type: 'Public',
-    country: 'USA',
+    id: this.props.id,
+    company: this.props.company || '',
+    location: this.props.location || '',
+    salary: this.props.salary || '',
+    description: this.props.description || '',
+    title: this.props.title || '',
+    postURL: this.props.postURL || '',
+    subtitle: this.props.subtitle || '',
+    headquarters: this.props.headquarters || '',
+    url: this.props.url || '',
+    year: this.props.year || '',
+    type: this.props.type || '',
+    country: this.props.country || '',
     showing: 'jobInfo',
     note: '',
-    notes: [],
+    notes: this.props.notes || [],
     task: '',
-    tasks: [],
-    taskDate: moment(),
-    deadline: moment(),
-    applied: moment(),
-    interview_1: moment(),
-    interview_2: moment(),
-    offer: moment(),
-    calendarSelected: ''
+    tasks: this.props.tasks || [],
+    taskDate: this.props.taskDate || moment(),
+    deadline: this.props.deadline || moment(),
+    applied: this.props.applied || moment(),
+    interview_1: this.props.interview_1 || moment(),
+    interview_2: this.props.interview_2 || moment(),
+    offer: this.props.offer || moment(),
+    calendarSelected: '',
+    status: this.props.status || 'WISHLIST'
   };
 
   handleInputChange = ({ target: { name, value } }) => {
@@ -94,6 +96,11 @@ class JobContainer extends Component {
     this.setState({ tasks });
   };
 
+  handleStatusChange = ({ target: { value: status } }) => {
+    const { id, status: oldStatus } = this.state;
+    this.setState({ status }, () => this.props.handleStatusChange(id, oldStatus, status));
+  };
+
   render() {
     const {
       company,
@@ -118,7 +125,8 @@ class JobContainer extends Component {
       applied,
       interview_1,
       interview_2,
-      offer
+      offer,
+      status
     } = this.state;
 
     return (
@@ -134,7 +142,7 @@ class JobContainer extends Component {
             </Button>
           }
         >
-          <JobHeader company={company} title={title} />
+          <JobHeader company={company} title={title} handleStatusChange={this.handleStatusChange} status={status} />
           <JobSideMenu handleSideMenuClick={this.handleSideMenuClick} />
           <JobContent
             company={company}
