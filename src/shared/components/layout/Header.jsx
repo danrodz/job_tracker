@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Navbar, NavItem, Row } from 'react-materialize';
+import { Navbar, NavItem, Row, Button } from 'react-materialize';
+import logo from '../../images/logo.png';
 
 // We created a component with a simple arrow function.
 const Header = props => {
@@ -10,7 +11,7 @@ const Header = props => {
   return (
     <Row className="row App-header">
       <a href={url}>
-        <img src="https://huntr.co/images/huntr_logo_white.png" alt="logo" />
+        <img src={logo} alt="logo" />
       </a>
 
       <Navbar right>
@@ -21,27 +22,30 @@ const Header = props => {
           <Link to="/about">About</Link>
         </NavItem>
         <NavItem>
-          <Link to="/login">Login</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/signup">Signup</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/notes">Notes</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/todo">Todo</Link>
-        </NavItem>
-        <NavItem>
           <Link to="/contact">Contact</Link>
         </NavItem>
-        <NavItem>
-          <Link to="/login"
-            onClick={() => {
-              localStorage.clear();
-              this.props.history.push('/login');
-            }}>Signout</Link>
-        </NavItem>
+        {localStorage.token ? (
+          <NavItem>
+            <Link
+              to="/login"
+              onClick={() => {
+                localStorage.clear();
+                this.props.history.push('/login');
+              }}
+            >
+              Signout
+            </Link>
+          </NavItem>
+        ) : (
+          <Fragment>
+            <NavItem>
+              <Link to="/login">Login</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/signup">Signup</Link>
+            </NavItem>
+          </Fragment>
+        )}
       </Navbar>
     </Row>
   );

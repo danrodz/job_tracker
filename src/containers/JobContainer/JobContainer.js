@@ -6,8 +6,10 @@ import JobSideMenu from '../../components/Job/JobLayout/JobSideMenu/JobSideMenu'
 import moment from 'moment';
 // import { object, string, array, func } from 'prop-types';
 
+/* global localStorage */
 class JobContainer extends Component {
   state = {
+    color: this.props.color || '',
     id: this.props.id,
     company: this.props.company || '',
     location: this.props.location || '',
@@ -35,6 +37,14 @@ class JobContainer extends Component {
     calendarSelected: '',
     status: this.props.status || 'WISHLIST'
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.color !== this.props.color) {
+      this.setState({ color: nextProps.color });
+    } else if (nextProps.status !== this.props.status) {
+      this.setState({ status: nextProps.status });
+    }
+  }
 
   handleInputChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
@@ -98,11 +108,17 @@ class JobContainer extends Component {
 
   handleStatusChange = ({ target: { value: status } }) => {
     const { id, status: oldStatus } = this.state;
-    this.setState({ status }, () => this.props.handleStatusChange(id, oldStatus, status));
+    this.props.handleStatusChange(id, oldStatus, status);
+  };
+
+  handleColorChange = ({ target: { value: color } }) => {
+    const { id, status } = this.state;
+    this.props.handleColorChange(color, id, status);
   };
 
   render() {
     const {
+      color,
       company,
       location,
       salary,
@@ -134,7 +150,7 @@ class JobContainer extends Component {
         <Modal
           fixedFooter
           trigger={
-            <Button waves="light">
+            <Button waves="light" className={color}>
               {company}
               <Icon right large>
                 add_circle_outline
@@ -142,7 +158,14 @@ class JobContainer extends Component {
             </Button>
           }
         >
-          <JobHeader company={company} title={title} handleStatusChange={this.handleStatusChange} status={status} />
+          <JobHeader
+            company={company}
+            title={title}
+            handleStatusChange={this.handleStatusChange}
+            handleColorChange={this.handleColorChange}
+            color={color}
+            status={status}
+          />
           <JobSideMenu handleSideMenuClick={this.handleSideMenuClick} />
           <JobContent
             company={company}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-materialize';
-import JobContainer from '../JobContainer/JobContainer';
-
+import { Row } from 'react-materialize';
+import ListContainer from '../ListContainer/ListContainer';
+import jobs from './jobs';
 // Navigation Bar For BoardContainer
 // List Container
 const WISHLIST = [];
@@ -10,81 +10,6 @@ const PHONE = [];
 const ON_SITE = [];
 const OFFER = [];
 const REJECT = [];
-
-const jobs = [
-  {
-    id: 1,
-    company: 'Google',
-    location: 'Austin',
-    salary: '$100,000',
-    description: 'really want it',
-    title: 'Software Developer',
-    postURL: 'indeed.com',
-    subtitle: 'Google your life away',
-    headquarters: 'Hippie Land, CA',
-    url: 'google.com',
-    year: '1998',
-    type: 'Public',
-    country: 'USA',
-    notes: [],
-    tasks: [],
-    taskDate: null,
-    deadline: null,
-    applied: null,
-    interview_1: null,
-    interview_2: null,
-    offer: null,
-    status: 'WISHLIST'
-  },
-  {
-    id: 2,
-    company: 'Google',
-    location: 'Austin',
-    salary: '$100,000',
-    description: 'really want it',
-    title: 'Software Developer',
-    postURL: 'indeed.com',
-    subtitle: 'Google your life away',
-    headquarters: 'Hippie Land, CA',
-    url: 'google.com',
-    year: '1998',
-    type: 'Public',
-    country: 'USA',
-    notes: [],
-    tasks: [],
-    taskDate: null,
-    deadline: null,
-    applied: null,
-    interview_1: null,
-    interview_2: null,
-    offer: null,
-    status: 'WISHLIST'
-  },
-  {
-    id: 3,
-    company: 'Google',
-    location: 'Austin',
-    salary: '$100,000',
-    description: 'really want it',
-    title: 'Software Developer',
-    postURL: 'indeed.com',
-    subtitle: 'Google your life away',
-    headquarters: 'Hippie Land, CA',
-    url: 'google.com',
-    year: '1998',
-    type: 'Public',
-    country: 'USA',
-    notes: [],
-    tasks: [],
-    taskDate: null,
-    deadline: null,
-    applied: null,
-    interview_1: null,
-    interview_2: null,
-    offer: null,
-    status: 'WISHLIST'
-  }
-];
 
 class BoardContainer extends Component {
   state = {
@@ -140,65 +65,72 @@ class BoardContainer extends Component {
 
   handleStatusChange = (id, status, newStatus) => {
     let array = this.state[status];
-    array = [...array];
-    const item = array.find(job => job.id === id);
+    let item = array.find(job => job.id === id);
     array = array.filter(job => job !== item);
-    let newArray = this.state[newStatus];
+    item = { ...item };
+    item.status = newStatus;
+    let newArray = [...this.state[newStatus]];
     newArray = [...newArray, item];
     this.setState({ [status]: array, [newStatus]: newArray });
+  };
+
+  handleColorChange = (color, id, status) => {
+    let array = this.state[status];
+    array = [...array];
+    let item = array.find(job => job.id === id);
+    array = array.filter(job => job !== item);
+    item = { ...item };
+    item.color = color;
+    array = [...array, item];
+
+    this.setState({ [status]: array });
   };
 
   render() {
     return (
       <Row>
-        <Col s={2}>
-          <h5>WISHLIST</h5>
-          {this.state.WISHLIST.length
-            ? this.state.WISHLIST.map(job => (
-              <JobContainer key={job.id} handleStatusChange={this.handleStatusChange} {...job} />
-              ))
-            : null}
-        </Col>
-        <Col s={2}>
-          <h5>APPLIED</h5>
-          {this.state.APPLIED.length
-            ? this.state.APPLIED.map(job => (
-              <JobContainer key={job.id} handleStatusChange={this.handleStatusChange} {...job} />
-              ))
-            : null}
-        </Col>
-        <Col s={2}>
-          <h5>PHONE</h5>
-          {this.state.PHONE.length
-            ? this.state.PHONE.map(job => (
-              <JobContainer key={job.id} handleStatusChange={this.handleStatusChange} {...job} />
-              ))
-            : null}
-        </Col>
-        <Col s={2}>
-          <h5>ON SITE</h5>
-          {this.state['ON SITE'].length
-            ? this.state['ON SITE'].map(job => (
-              <JobContainer key={job.id} handleStatusChange={this.handleStatusChange} {...job} />
-              ))
-            : null}
-        </Col>
-        <Col s={2}>
-          <h5>OFFER</h5>
-          {this.state.OFFER.length
-            ? this.state.OFFER.map(job => (
-              <JobContainer key={job.id} handleStatusChange={this.handleStatusChange} {...job} />
-              ))
-            : null}
-        </Col>
-        <Col s={2}>
-          <h5>REJECT</h5>
-          {this.state.REJECT.length
-            ? this.state.REJECT.map(job => (
-              <JobContainer key={job.id} handleStatusChange={this.handleStatusChange} {...job} />
-              ))
-            : null}
-        </Col>
+        <ListContainer
+          jobs={[...this.state.WISHLIST]}
+          backgroundColor="#E9E9E9"
+          columnTitle="WISHLIST"
+          handleColorChange={this.handleColorChange}
+          handleStatusChange={this.handleStatusChange}
+        />
+        <ListContainer
+          jobs={[...this.state.APPLIED]}
+          backgroundColor="#F0F0F0"
+          columnTitle="APPLIED"
+          handleColorChange={this.handleColorChange}
+          handleStatusChange={this.handleStatusChange}
+        />
+        <ListContainer
+          jobs={[...this.state.PHONE]}
+          backgroundColor="#E9E9E9"
+          columnTitle="PHONE"
+          handleColorChange={this.handleColorChange}
+          handleStatusChange={this.handleStatusChange}
+        />
+        <ListContainer
+          jobs={[...this.state['ON SITE']]}
+          backgroundColor="#F0F0F0"
+          columnTitle="ON SITE"
+          handleColorChange={this.handleColorChange}
+          handleStatusChange={this.handleStatusChange}
+        />
+        <ListContainer
+          jobs={[...this.state.OFFER]}
+          backgroundColor="#E9E9E9"
+          columnTitle="OFFER"
+          handleColorChange={this.handleColorChange}
+          handleStatusChange={this.handleStatusChange}
+        />
+        <ListContainer
+          jobs={[...this.state.REJECT]}
+          backgroundColor="#F0F0F0"
+          columnTitle="REJECT"
+          handleColorChange={this.handleColorChange}
+          handleStatusChange={this.handleStatusChange}
+        />
       </Row>
     );
   }
